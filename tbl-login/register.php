@@ -19,24 +19,26 @@ $conn = $databaseService->getConnection();
 
 $data = json_decode(file_get_contents("php://input"));
 
-$firstName = $data->first_name;
-$lastName = $data->last_name;
+$nama_depan = $data->nama_depan;
+$nama_belakang = $data->nama_belakang;
 $email = $data->email;
+$no_wa = $data->no_wa;
 $password = $data->password;
+
 
 $table_name = 'tbl_login';
 
 $query = "INSERT INTO " . $table_name . "
-                SET first_name = :firstname,
-                    last_name = :lastname,
+                SET nama_depan = :nama_depan,
+                    nama_belakang = :nama_belakang,
                     email = :email,
                     no_wa = :no_wa,
                     password = :password";
 
 $stmt = $conn->prepare($query);
 
-$stmt->bindParam(':firstname', $firstName);
-$stmt->bindParam(':lastname', $lastName);
+$stmt->bindParam(':nama_depan', $nama_depan);
+$stmt->bindParam(':nama_belakang', $nama_belakang);
 $stmt->bindParam(':email', $email);
 $stmt->bindParam(':no_wa', $no_wa);
 

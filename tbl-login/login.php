@@ -26,7 +26,7 @@ $password = $data->password;
 
 $table_name = 'tbl_login';
 
-$query = "SELECT id, nama_depan, nama_belakang, email, no_wa, password FROM " . $table_name . " WHERE email = ? LIMIT 0,1";
+$query = "SELECT id, nama_depan, nama_belakang, no_wa, password FROM " . $table_name . " WHERE email = ? LIMIT 0,1";
 
 $stmt = $conn->prepare( $query );
 $stmt->bindParam(1, $email);
@@ -57,8 +57,9 @@ if($num > 0){
             "exp" => $expire_claim,
             "data" => array(
                 "id" => $id,
-                "firstname" => $firstname,
-                "lastname" => $lastname,
+                "nama_depan" => $nama_depan,
+                "nama_belakang" => $nama_belakang,
+                "no_wa"=> $no_wa,
                 "email" => $email
         ));
 
